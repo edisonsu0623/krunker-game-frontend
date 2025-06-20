@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krunker-like 3D FPS Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 遊戲 UI 介面 -->
+    <div id="ui-container">
+        <!-- HUD 介面 -->
+        <div id="hud" class="hidden">
+            <div id="health-bar">
+                <div class="bar-label">血量</div>
+                <div class="bar-container">
+                    <div id="health-fill" class="bar-fill"></div>
+                </div>
+                <div id="health-text">100</div>
+            </div>
+            
+            <div id="ammo-display">
+                <div id="ammo-current">30</div>
+                <div id="ammo-separator">/</div>
+                <div id="ammo-total">90</div>
+            </div>
+            
+            <div id="crosshair">+</div>
+            
+            <div id="score-display">
+                <div>擊殺: <span id="kills">0</span></div>
+                <div>死亡: <span id="deaths">0</span></div>
+            </div>
+        </div>
+        
+        <!-- 主選單 -->
+        <div id="main-menu">
+            <h1>Krunker-like FPS</h1>
+            <div class="menu-buttons">
+                <button id="start-game-btn" class="menu-btn">開始遊戲</button>
+                <button id="settings-btn" class="menu-btn">設定</button>
+            </div>
+        </div>
+        
+        <!-- 設定選單 -->
+        <div id="settings-menu" class="hidden">
+            <h2>遊戲設定</h2>
+            <div class="setting-item">
+                <label for="sensitivity">滑鼠靈敏度:</label>
+                <input type="range" id="sensitivity" min="0.1" max="2" step="0.1" value="1">
+                <span id="sensitivity-value">1.0</span>
+            </div>
+            <div class="setting-item">
+                <label for="fov">視野 (FOV):</label>
+                <input type="range" id="fov" min="60" max="120" step="5" value="75">
+                <span id="fov-value">75</span>
+            </div>
+            <button id="back-to-menu-btn" class="menu-btn">返回主選單</button>
+        </div>
+        
+        <!-- 遊戲結束畫面 -->
+        <div id="game-over" class="hidden">
+            <h2>遊戲結束</h2>
+            <div id="final-score">
+                <p>最終得分: <span id="final-kills">0</span> 擊殺 / <span id="final-deaths">0</span> 死亡</p>
+            </div>
+            <button id="restart-btn" class="menu-btn">重新開始</button>
+            <button id="main-menu-btn" class="menu-btn">主選單</button>
+        </div>
+    </div>
+    
+    <!-- 3D 遊戲畫面 -->
+    <canvas id="game-canvas"></canvas>
+    
+    <!-- 載入提示 -->
+    <div id="loading" class="hidden">
+        <div class="loading-text">載入中...</div>
+        <div class="loading-bar">
+            <div id="loading-progress"></div>
+        </div>
+    </div>
+    
+    <!-- 控制說明 -->
+    <div id="controls-info" class="hidden">
+        <h3>控制說明</h3>
+        <ul>
+            <li>WASD - 移動</li>
+            <li>滑鼠 - 視角</li>
+            <li>左鍵 - 射擊</li>
+            <li>右鍵 - 瞄準</li>
+            <li>空白鍵 - 跳躍</li>
+            <li>Shift - 滑步</li>
+            <li>R - 重新裝彈</li>
+            <li>ESC - 選單</li>
+        </ul>
+        <button id="close-controls-btn">關閉</button>
+    </div>
+    
+    <!-- JavaScript 載入 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/network.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/weapon.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+

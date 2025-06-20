@@ -1,0 +1,374 @@
+/* 基礎樣式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+    cursor: none;
+}
+
+/* 遊戲畫布 */
+#game-canvas {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background: #87CEEB;
+}
+
+/* UI 容器 */
+#ui-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* 隱藏元素 */
+.hidden {
+    display: none !important;
+}
+
+/* HUD 介面 */
+#hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* 血量條 */
+#health-bar {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bar-label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.bar-container {
+    width: 200px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00);
+    transition: width 0.3s ease;
+    width: 100%;
+}
+
+#health-text {
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 30px;
+}
+
+/* 彈藥顯示 */
+#ammo-display {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+#ammo-current {
+    color: #00ff00;
+}
+
+#ammo-separator {
+    margin: 0 10px;
+    color: #fff;
+}
+
+#ammo-total {
+    color: #ffff00;
+}
+
+/* 準星 */
+#crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+}
+
+/* 得分顯示 */
+#score-display {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    text-align: right;
+    font-size: 16px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+#score-display div {
+    margin-bottom: 5px;
+}
+
+/* 主選單 */
+#main-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    pointer-events: all;
+}
+
+#main-menu h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #00ff00;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    background: linear-gradient(45deg, #333, #555);
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: all;
+}
+
+.menu-btn:hover {
+    background: linear-gradient(45deg, #555, #777);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.menu-btn:active {
+    transform: translateY(0);
+}
+
+/* 設定選單 */
+#settings-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    pointer-events: all;
+    min-width: 400px;
+}
+
+#settings-menu h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #00ff00;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.setting-item label {
+    font-size: 16px;
+    min-width: 120px;
+}
+
+.setting-item input[type="range"] {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.setting-item span {
+    min-width: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* 遊戲結束畫面 */
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    border: 2px solid #ff0000;
+    pointer-events: all;
+}
+
+#game-over h2 {
+    color: #ff0000;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+#final-score {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+/* 載入畫面 */
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    pointer-events: all;
+}
+
+.loading-text {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #00ff00;
+}
+
+.loading-bar {
+    width: 300px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#loading-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff00, #ffff00);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* 控制說明 */
+#controls-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    pointer-events: all;
+    max-width: 400px;
+}
+
+#controls-info h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #00ff00;
+}
+
+#controls-info ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+#controls-info li {
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#close-controls-btn {
+    width: 100%;
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+#close-controls-btn:hover {
+    background: #555;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    #health-bar, #ammo-display {
+        bottom: 20px;
+    }
+    
+    #health-bar {
+        left: 20px;
+    }
+    
+    #ammo-display {
+        right: 20px;
+    }
+    
+    #score-display {
+        top: 20px;
+        right: 20px;
+    }
+    
+    .bar-container {
+        width: 150px;
+    }
+    
+    #main-menu {
+        padding: 20px;
+        width: 90%;
+        max-width: 400px;
+    }
+    
+    #main-menu h1 {
+        font-size: 28px;
+    }
+    
+    .menu-btn {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+}
+
