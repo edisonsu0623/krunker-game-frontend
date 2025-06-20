@@ -6,7 +6,7 @@ class NetworkManager {
         this.roomId = null;
         this.playerId = null;
         this.players = new Map();
-        this.serverUrl = window.location.origin;
+        this.serverUrl = "https://krunker-game-backend.vercel.app";
         
         this.callbacks = {
             onPlayerJoined: null,
